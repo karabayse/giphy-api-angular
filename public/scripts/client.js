@@ -18,7 +18,7 @@ myApp.controller('GiphyController', function($http) {
       url: 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC'
     }).then(function(response){
       console.log('back with:', response);
-      vm.gifArray = response.data;
+      vm.random = response.data.data.image_url;
     });
   }; // end randomFunction
 
@@ -31,7 +31,7 @@ myApp.controller('GiphyController', function($http) {
       url: 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + vm.keyword
     }).then(function(response){
       console.log('back with:', response);
-      vm.gifArray = response.data.keyword;
+      vm.keyword = response.data.data.image_url;
     });
   }; // end keyWordFunction
 }); // end HttpController

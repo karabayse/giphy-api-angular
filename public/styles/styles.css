@@ -1,4 +1,20 @@
+.jumbotron {
+  background-color: seagreen;
+  font-family: Georgia;
+  text-shadow: 2px 2px #ff0000
+}
+
 body {
   background-color: aliceblue;
   text-align: center;
+}
+
+button {
+  color: blue;
+  background-color: lightblue;
+}
+
+h4 {
+  font-family: Georgia;
+  text-decoration: underline;
 }
