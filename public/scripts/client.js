@@ -6,8 +6,8 @@ var myApp = angular.module('myApp', []);
 // inject it into function ------------------vvvvv
 myApp.controller('GiphyController', function($http) {
   console.log('NG');
+  // variable vm is this controller
   var vm = this;
-  vm.gifArray = [];
 
   // function to get random gifs
   vm.randomFunction = function(){
@@ -23,15 +23,16 @@ myApp.controller('GiphyController', function($http) {
   }; // end randomFunction
 
   // function to get gifs with key word
-  vm.keyWordFunction = function(){
+  vm.keyWordFunction = function(input){
     console.log('I am here in keyWordFunction');
     // get call to search by key word
     $http({
       method: 'GET',
-      url: 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + vm.keyword
+      url: 'http://api.giphy.com/v1/gifs/search?q=' + input + '&api_key=dc6zaTOxFJmzC'
     }).then(function(response){
       console.log('back with:', response);
-      vm.keyword = response.data.data.image_url;
+      vm.keywordArray = [];
+      vm.keywordArray.push(response.data.data.image_url);
     });
   }; // end keyWordFunction
-}); // end HttpController
+}); // end controller

@@ -1,7 +1,6 @@
 .jumbotron {
-  background-color: seagreen;
-  font-family: Georgia;
-  text-shadow: 2px 2px #ff0000
+  background-color: White;
+  font-family: Helvetica;
 }
 
 body {
@@ -11,10 +10,9 @@ body {
 
 button {
   color: blue;
-  background-color: lightblue;
+  background-color: LightBlue;
 }
 
 h4 {
-  font-family: Georgia;
-  text-decoration: underline;
+  font-family: Helvetica;
 }

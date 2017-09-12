@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <script src="vendors/angular.min.js" charset="utf-8"></script>
   <script src="scripts/client.js" charset="utf-8"></script>
+  <script src="scripts/services/giphy.service.js" charset="utf-8"></script>
   <link rel="stylesheet" href="/vendors/bootstrap.min.css">
   <link rel="stylesheet" href="/styles/styles.css">
   <title>Giphy API + Angular</title>
@@ -16,15 +17,16 @@
   </div>
   <div ng-controller="GiphyController as gc">
     <input type="text" ng-model="gc.keyWord" placeholder="key word">
-    <button type="button" name="keyWordButton" ng-click="gc.keyWordFunction()">SEARCH</button>
+    <button type="button" name="keyWordButton" ng-click="gc.keyWordFunction(gc.keyWord)">SEARCH</button>
     <button type="button" name="randomButton" ng-click="gc.randomFunction()">RANDOM</button>
     <div class="container">
       <h4>search results</h4>
-      <div class="col-sm-3">
+      <div>
         <img ng-src="{{ gc.random }}">
       </div>
-      <div class="col-sm-3">
-        <img ng-src="{{ gc.keyword }}">
+
+      <div ng-repeat="gif in gc.keywordArray" class="col-sm-3">
+        <img ng-src="{{ gif.data.data.image_url }}">
       </div>
     </div>
 
