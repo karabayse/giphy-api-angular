@@ -32,7 +32,11 @@ myApp.controller('GiphyController', function($http) {
     }).then(function(response){
       console.log('back with:', response);
       vm.keywordArray = [];
-      vm.keywordArray.push(response.data.data.image_url);
-    });
+      var keywordData = response.data;
+      for (var i = 0; i < response.data.data.length; i++) {
+        vm.keywordArray.push(keywordData.data[i].url);
+      } // end for loop
+    }); // end .then
+    vm.keyWord = '';
   }; // end keyWordFunction
 }); // end controller
