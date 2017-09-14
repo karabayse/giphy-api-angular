@@ -5,7 +5,7 @@ var myApp = angular.module('myApp', []);
 // we get $http for free, but need to tell the Controller that we're using it
 // inject it into function ------------------vvvvv
 myApp.controller('GiphyController', function($http) {
-  console.log('NG');
+  console.log('In controller in client.js');
   // variable vm is this controller
   var vm = this;
 
@@ -31,12 +31,17 @@ myApp.controller('GiphyController', function($http) {
       url: 'http://api.giphy.com/v1/gifs/search?q=' + input + '&api_key=dc6zaTOxFJmzC'
     }).then(function(response){
       console.log('back with:', response);
-      vm.keywordArray = [];
-      var keywordData = response.data;
-      for (var i = 0; i < response.data.data.length; i++) {
-        vm.keywordArray.push(keywordData.data[i].url);
-      } // end for loop
-    }); // end .then
+      // vm.keywordArray = [];
+      // var keywordData = response.data;
+      // for (var i = 0; i < response.data.data.length; i++) {
+      //   vm.keywordArray.push(keywordData.data[i].url);
+
+      vm.keyWordSearch = response.data.data.url;
+      console.log(keyWordSearch);
+      // } // end for loop
+    // }); // end .then
+
+  }); // end keyWordFunction
     vm.keyWord = '';
-  }; // end keyWordFunction
-}); // end controller
+}; // end controller
+});

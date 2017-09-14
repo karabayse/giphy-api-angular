@@ -27,8 +27,10 @@
         <img ng-src="{{ gc.random }}">
       </div>
 
-      <div ng-repeat="gif in gc.keywordArray" class="col-sm-3">
-        <img ng-src="{{ gif.data.data.image_url }}">
+      <div >
+        <!-- ng-repeat="gif in gc.keyword" class="col-sm-3" -->
+        <img ng-src="{{ gc.keyWordSearch }}">
+        <!-- "{{ gif.keyword }}" -->
       </div>
     </div>
 
