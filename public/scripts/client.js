@@ -8,6 +8,7 @@ myApp.controller('GiphyController', function($http) {
   console.log('In controller in client.js');
   // variable vm is this controller
   var vm = this;
+  vm.keyWordArray = [];
 
   // function to get random gifs
   vm.randomFunction = function(){
@@ -31,17 +32,12 @@ myApp.controller('GiphyController', function($http) {
       url: 'http://api.giphy.com/v1/gifs/search?q=' + input + '&api_key=dc6zaTOxFJmzC'
     }).then(function(response){
       console.log('back with:', response);
-      // vm.keywordArray = [];
-      // var keywordData = response.data;
-      // for (var i = 0; i < response.data.data.length; i++) {
-      //   vm.keywordArray.push(keywordData.data[i].url);
-
-      vm.keyWordSearch = response.data.data.url;
-      console.log(keyWordSearch);
-      // } // end for loop
-    // }); // end .then
-
-  }); // end keyWordFunction
+      for (var i = 0; i < 8; i++) {
+        vm.keyWordArrayObjects = response.data.data[i].images.downsized.url;
+        vm.keyWordArray.push(vm.keyWordArrayObjects);
+      }
+      return vm.keyWordArray;
+    });
     vm.keyWord = '';
-}; // end controller
-});
+}; // end keyWordFunction
+}); // end controller

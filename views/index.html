@@ -16,21 +16,21 @@
     <h1>Giphy API + Angular</h1>
   </div>
   <div ng-controller="GiphyController as gc">
-    <header>
-      <input type="text" ng-model="gc.keyWord" placeholder="key word">
-      <button type="button" name="keyWordButton" ng-click="gc.keyWordFunction(gc.keyWord)">SEARCH</button>
-      <button type="button" name="randomButton" ng-click="gc.randomFunction()">RANDOM</button>
-      </header>
+
+    <input type="text" ng-model="gc.keyWord" placeholder="key word">
+    <button type="button" name="keyWordButton" ng-click="gc.keyWordFunction(gc.keyWord)">SEARCH</button>
+    <button type="button" name="randomButton" ng-click="gc.randomFunction()">RANDOM</button>
+
     <div class="container">
       <h4>search results</h4>
       <div>
         <img ng-src="{{ gc.random }}">
       </div>
 
-      <div >
-        <!-- ng-repeat="gif in gc.keyword" class="col-sm-3" -->
-        <img ng-src="{{ gc.keyWordSearch }}">
-        <!-- "{{ gif.keyword }}" -->
+      <div class="row">
+        <div class="col-md-3 search" ng-repeat="gif in gc.keyWordArray">
+          <img ng-src="{{ gif }}" class="img-thumbnail">
+        </div>
       </div>
     </div>
 
