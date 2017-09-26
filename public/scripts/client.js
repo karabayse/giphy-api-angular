@@ -11,26 +11,26 @@ myApp.controller('GiphyController', function($http) {
   vm.keyWordArray = [];
 
   // function to get random gifs
-  vm.randomFunction = function(){
+  vm.randomFunction = function() {
     console.log('I am here in randomFunction');
     // get call to get random gif
     $http({
       method: 'GET',
       url: 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC'
-    }).then(function(response){
+    }).then(function(response) {
       console.log('back with:', response);
       vm.random = response.data.data.image_url;
     });
   }; // end randomFunction
 
   // function to get gifs with key word
-  vm.keyWordFunction = function(input){
+  vm.keyWordFunction = function(input) {
     console.log('I am here in keyWordFunction');
     // get call to search by key word
     $http({
       method: 'GET',
       url: 'http://api.giphy.com/v1/gifs/search?q=' + input + '&api_key=dc6zaTOxFJmzC'
-    }).then(function(response){
+    }).then(function(response) {
       console.log('back with:', response);
       for (var i = 0; i < 8; i++) {
         vm.keyWordArrayObjects = response.data.data[i].images.downsized.url;
@@ -39,5 +39,5 @@ myApp.controller('GiphyController', function($http) {
       return vm.keyWordArray;
     });
     vm.keyWord = '';
-}; // end keyWordFunction
+  }; // end keyWordFunction
 }); // end controller
